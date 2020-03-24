@@ -2,6 +2,9 @@
 
 1. Install Python 3.8+
 1. Install `pipenv`
+    ```bash
+    pip install pipenv
+    ```
 1. Sync to download packages
     ```bash
     pipenv sync
