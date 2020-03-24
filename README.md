@@ -1,6 +1,9 @@
 # How to use
 
 1. Install Python 3.8+
+
+> Require Chrome 80.x
+
 1. Install `pipenv`
     ```bash
     pip install pipenv
