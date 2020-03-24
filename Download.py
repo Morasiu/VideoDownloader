@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from requests import get
 from tqdm import tqdm
 
-import urllib3, os
+import urllib3, os, time
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 __version__ = "0.1.0"
@@ -32,7 +32,9 @@ def download_episode(driver, e):
     driver.get(player_url)
     frame = driver.find_element_by_xpath("/html/body/div[2]/div/center/iframe")
     driver.switch_to.frame(frame)
-    video_url =  WebDriverWait(driver, 10).until(lambda x: x.find_element_by_xpath("/html/body/div/video")).get_attribute("src")
+    video =  WebDriverWait(driver, 10).until(lambda x: x.find_element_by_xpath("/html/body/div/video"))
+    time.sleep(2)
+    video_url =  video.get_attribute("src")
     print(f"Found video at: {video_url}")
 
     file_name = format_file_name(e["name"])
