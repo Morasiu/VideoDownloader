@@ -55,7 +55,6 @@ def download_episode(driver, e):
             fp.write(chunk)
     print("Done")
 
-
 def format_file_name(file_name):
     file_name = file_name \
         .replace('.', '') \
@@ -64,7 +63,6 @@ def format_file_name(file_name):
         .replace('"', '')
     file_name += ".mp4"
     return file_name
-
 
 def get_episodes(driver):
     table = driver.find_element_by_class_name("lista")
@@ -90,12 +88,10 @@ def get_episodes(driver):
     print(f"Found episodes: {len(episodes)}")
     return episodes
 
-
 def filer_episodes(episodes):
     files = os.listdir(DOWNLOAD_PATH)
     episodes = [e for e in episodes if format_file_name(e["name"]) not in files]
     return episodes
-
 
 def main():
     print("======================")
@@ -106,9 +102,6 @@ def main():
         print(f"Download directory ({DOWNLOAD_PATH})not found. Creating new one.")
         os.mkdir(DOWNLOAD_PATH)
 
-    # example: https://ft.wbijam.pl/ps.html
-    # url = input("Paste your URL here: ")
-
     driver = webdriver.Chrome()
     driver.get(url=URL)
 
@@ -117,7 +110,6 @@ def main():
     print(f"Episodes remained to download: {len(episodes)}")
     for e in episodes:
         download_episode(driver, e)
-
 
 if __name__ == "__main__":
     main()
