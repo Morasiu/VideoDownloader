@@ -9,9 +9,9 @@ import urllib3, os, time
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 __version__ = "0.1.0"
-DOWNLOAD_PATH = "./download/"
+DOWNLOAD_PATH = "./HxH/"
 DOWNLOAD_FILLERS = True
-URL = "https://ft.wbijam.pl/ps.html"
+URL = "https://hunter.wbijam.pl/hunter_x_hunter_2011.html"
 
 def download_episode(driver, e):
     mp4up_url = None
@@ -84,7 +84,7 @@ def get_episodes(driver):
         print("Ignoring fillers.")
         episodes = [e for e in episodes if e["type"] != EpisodeType.Filler]
 
-    episodes.sort(key=lambda x: x["link"])
+    episodes.reverse()
     print(f"Found episodes: {len(episodes)}")
     return episodes
 
