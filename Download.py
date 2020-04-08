@@ -9,9 +9,9 @@ import urllib3, os, time
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 __version__ = "0.1.0"
-DOWNLOAD_PATH = "./HxH/"
+DOWNLOAD_PATH = "./No game no life/"
 DOWNLOAD_FILLERS = True
-URL = "https://hunter.wbijam.pl/hunter_x_hunter_2011.html"
+URL = "https://ngnl.wbijam.pl/pierwsza_seria.html"
 
 def download_episode(driver, e):
     mp4up_url = None
@@ -60,7 +60,9 @@ def format_file_name(file_name):
         .replace('.', '') \
         .replace(":", '') \
         .replace(' ', '_') \
+        .replace('\'', '') \
         .replace('"', '')
+
     file_name += ".mp4"
     return file_name
 
